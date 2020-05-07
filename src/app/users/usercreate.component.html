@@ -1,0 +1,79 @@
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+                <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+                <ul>
+                    <li>
+                        <span class="ui-messages-summary" style="font-size:16px">Este formulario permite dar de alta usuarios que luego podran ser utilizados dentro de la aplicacion.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card no-margin">
+                <h1>Creación de usuarios</h1>
+                <form [formGroup]="userform" (ngSubmit)="onSubmit()">
+                <div class="ui-g form-group">
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">Nombres *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='firstname' [formGroup]='userform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">Apellidos *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='surname' [formGroup]='userform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">Email</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='email' [formGroup]='userform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">Reescriba Email</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='rewritedEmail' [formGroup]='userform'></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="password">Contraseña</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='password' [formGroup]='userform' isPassword='true'></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="password">Reescriba Contraseña</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='rewritedPassword' [formGroup]='userform' isPassword='true'></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="calendar">Fecha de nacimiento</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <p-calendar id="birthdate"></p-calendar>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">(*) campos obligatorios</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <button pButton type="submit" label="Enviar" [disabled]="!userform.valid"
+                         style="margin-bottom:10px" class="ui-button-success"></button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

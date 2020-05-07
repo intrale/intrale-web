@@ -1,0 +1,29 @@
+
+<div>
+  <div [formGroup]='formGroup'>
+    <div *ngIf='isPassword()'> 
+        <input 
+                id="{{id}}" 
+                formControlName="{{id}}"  
+                (change) = 'onChange($event)'
+                pPassword type="password" 
+                          promptLabel="Por favor ingrese contraseña"
+                          weakLabel="Demasiado fácil"
+                          mediumLabel="Complejidad media"
+                          strongLabel="Contraseña fuerte!"
+        />
+    </div>
+    <div *ngIf='!isPassword()'>
+        <input 
+                id="{{id}}" 
+                formControlName="{{id}}"  
+                type="text" 
+                pInputText 
+                (change) = 'onChange($event)'
+        />
+    </div>
+  </div>
+  <div *ngIf='hasErrors'> 
+    <p-message severity="error" text="{{errorsMessages}}"></p-message>
+  </div>
+</div>
