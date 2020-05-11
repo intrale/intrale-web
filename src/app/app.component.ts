@@ -1,6 +1,7 @@
-import {Component, AfterViewInit, OnDestroy, ViewChild, Renderer2} from '@angular/core';
+import {Component, AfterViewInit, OnDestroy, ViewChild, Renderer2, OnInit} from '@angular/core';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 import {ScrollPanel} from 'primeng/primeng';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -18,7 +19,9 @@ import {ScrollPanel} from 'primeng/primeng';
         ])
     ]
 })
-export class AppComponent implements AfterViewInit, OnDestroy {
+export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
+
+    formGroup: FormGroup;
 
     public menuInactiveDesktop: boolean;
 
@@ -38,7 +41,14 @@ export class AppComponent implements AfterViewInit, OnDestroy {
 
     topMenuButtonClick: boolean;
 
-    constructor(public renderer: Renderer2) {}
+    constructor(private formBuilder: FormBuilder, public renderer: Renderer2) {}
+
+    ngOnInit(): void {
+        this.formGroup = this.formBuilder.group({
+            username: new FormControl('',  Validators.required),
+            password: new FormControl('', Validators.required)
+        });
+    }
 
     ngAfterViewInit() {
         setTimeout(() => {this.scrollerViewChild.moveBar(); }, 100);
@@ -125,5 +135,15 @@ export class AppComponent implements AfterViewInit, OnDestroy {
         if (this.documentClickListener) {
             this.documentClickListener();
         }
+    }
+
+    onLogin(){
+        console.log('Intentando loguearse');
+    }
+
+    onSubmit(){
+        console.log('onSubmit init');
+        console.log('username:' + this.formGroup.get('username').value)
+        console.log('onSubmit finish');
     }
 }

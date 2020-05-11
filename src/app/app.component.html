@@ -9,9 +9,18 @@
         </a>
         <div id="topbar-icons" class="animated" [ngClass]="{'topbar-icons-visible flipInX':topMenuActive,'flipOutX':topMenuLeaving}">
             <span class="topbar-search" (click)="onSearchClick()">
-                <input type="text" placeholder="Search" />
-                <span class="topbar-search-icon fa fa-search"></span>
+                <app-input id='username' [formGroup]='formGroup' placeholder="Usuario" ></app-input>
+                <!--input id="username"  [formGroup]='formGroup' type="text" placeholder="Usuario" /-->
             </span>
+            <span class="topbar-search" (click)="onSearchClick()">
+                <app-input id='password' [formGroup]='formGroup' isPassword='true' placeholder="Contraseña"></app-input>
+                <!--input id="password" [formGroup]='formGroup' placeholder="Contraseña" pPassword type="password"  /-->
+            </span>
+            <span class="topbar-search" >
+                <button pButton type="submit" label="Ingresar" [disabled]="!formGroup.valid"
+                            style="margin-bottom:10px" class="ui-button-success" (click)="onSubmit()"></button>
+            </span>
+            <!-- Esto deberia estar condicionado a que ya este logueado-->
             <a href="#">
                 <span class="topbar-item-text">Messages</span>
                 <span class="topbar-icon fa fa-envelope-o animated swing"></span>
@@ -54,6 +63,6 @@
     </div>
     <div class="footer">
         <img src="assets/layout/images/logo-colored.png" alt="" width="32">
-        <span class="footer-text">PrimeNG Omega Theme and Layout</span>
+        <span class="footer-text">Intrale: Artesanías en software</span>
     </div>
 </div>

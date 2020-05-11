@@ -11,6 +11,7 @@
                           weakLabel="Demasiado fácil"
                           mediumLabel="Complejidad media"
                           strongLabel="Contraseña fuerte!"
+                placeholder="{{placeholder}}"
         />
     </div>
     <div *ngIf='!isPassword()'>
@@ -20,6 +21,7 @@
                 type="text" 
                 pInputText 
                 (change) = 'onChange($event)'
+                placeholder="{{placeholder}}"
         />
     </div>
   </div>

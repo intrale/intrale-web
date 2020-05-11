@@ -10,6 +10,7 @@ import { identifierModuleUrl } from '@angular/compiler';
 export class InputComponent implements OnInit {
 
   @Input() id: string;
+  @Input() placeholder: string;
   @Input() formGroup: FormGroup;
   @Input('isPassword') password: string;
 
