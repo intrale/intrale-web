@@ -3,6 +3,8 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
 import {ScrollPanel} from 'primeng/primeng';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
+import Endpoints from './config/endpoints.json'
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -143,6 +145,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
 
     onSubmit(){
         console.log('onSubmit init');
+        console.log('Signup Endpoint:' + Endpoints.auth.signup)
         console.log('username:' + this.formGroup.get('username').value)
         console.log('onSubmit finish');
     }
