@@ -12,7 +12,8 @@ export class InputComponent implements OnInit {
   @Input() id: string;
   @Input() placeholder: string;
   @Input() formGroup: FormGroup;
-  @Input('isPassword') password: string;
+  @Input() obfuscated: boolean = false;
+  @Input() feedback: boolean = true;
 
   @Output('onChange') change: EventEmitter<any>;
 
@@ -24,13 +25,6 @@ export class InputComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  isPassword():boolean {
-    if (this.password){
-      return (this.password.toLowerCase() == 'true')
-    } 
-    return false;
   }
 
   onChange(event:any){

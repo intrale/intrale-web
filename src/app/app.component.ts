@@ -3,6 +3,8 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
 import {ScrollPanel} from 'primeng/primeng';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import Endpoints from './config/endpoints.json'
 
 @Component({
@@ -43,7 +45,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
 
     topMenuButtonClick: boolean;
 
-    constructor(private formBuilder: FormBuilder, public renderer: Renderer2) {}
+    constructor(private formBuilder: FormBuilder, public renderer: Renderer2, private http: HttpClient) {}
 
     ngOnInit(): void {
         this.formGroup = this.formBuilder.group({
@@ -145,8 +147,18 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
 
     onSubmit(){
         console.log('onSubmit init');
-        console.log('Signup Endpoint:' + Endpoints.auth.signup)
-        console.log('username:' + this.formGroup.get('username').value)
+        console.log('Signup Endpoint:' + Endpoints.auth.signin);
+
+        this.http.post(Endpoints.auth.signin, 
+            {
+                "username":"AuthTest1",
+                "password":"Administrators"
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).subscribe(data=> console.log("data:" + data));
+        console.log('username:' + this.formGroup.get('username').value);
         console.log('onSubmit finish');
     }
 }

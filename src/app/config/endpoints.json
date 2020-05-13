@@ -1,6 +1,6 @@
 {
     "auth": {
-      "signup": "www.signup.com",
-      "signin": "www.signin.com"
+      "signup": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/signup",
+      "signin": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/signin"
     }
   }

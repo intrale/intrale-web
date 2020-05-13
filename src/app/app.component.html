@@ -9,12 +9,10 @@
         </a>
         <div id="topbar-icons" class="animated" [ngClass]="{'topbar-icons-visible flipInX':topMenuActive,'flipOutX':topMenuLeaving}">
             <span class="topbar-search" (click)="onSearchClick()">
-                <app-input id='username' [formGroup]='formGroup' placeholder="Usuario" ></app-input>
-                <!--input id="username"  [formGroup]='formGroup' type="text" placeholder="Usuario" /-->
+                <app-input id='username' [formGroup]='formGroup' placeholder="Usuario"  [feedback]=false></app-input>
             </span>
             <span class="topbar-search" (click)="onSearchClick()">
-                <app-input id='password' [formGroup]='formGroup' isPassword='true' placeholder="Contraseña"></app-input>
-                <!--input id="password" [formGroup]='formGroup' placeholder="Contraseña" pPassword type="password"  /-->
+                <app-input id='password' [formGroup]='formGroup' [obfuscated]=true placeholder="Contraseña" [feedback]=false></app-input>
             </span>
             <span class="topbar-search" >
                 <button pButton type="submit" label="Ingresar" [disabled]="!formGroup.valid"

@@ -1,7 +1,7 @@
 
 <div>
   <div [formGroup]='formGroup'>
-    <div *ngIf='isPassword()'> 
+    <div *ngIf='obfuscated'> 
         <input 
                 id="{{id}}" 
                 formControlName="{{id}}"  
@@ -12,9 +12,10 @@
                           mediumLabel="Complejidad media"
                           strongLabel="Contraseña fuerte!"
                 placeholder="{{placeholder}}"
+                [feedback]=feedback
         />
     </div>
-    <div *ngIf='!isPassword()'>
+    <div *ngIf='!obfuscated'>
         <input 
                 id="{{id}}" 
                 formControlName="{{id}}"  
