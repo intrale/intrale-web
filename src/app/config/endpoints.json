@@ -1,6 +1,11 @@
 {
     "auth": {
       "signup": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/signup",
-      "signin": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/signin"
+      "signin": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/signin",
+      "listusers": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/listusers",
+      "listgroups": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/listgroups",
+      "edituser": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/edituser",
+      "getuser": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/getuser",
+      "deleteuser": "https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/auth/user/delete"
     }
-  }
+} 

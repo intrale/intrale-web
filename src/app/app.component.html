@@ -1,5 +1,40 @@
 <div class="wrapper" [ngClass]="{'sidebar-inactive-l':menuInactiveDesktop, 'sidebar-active-m':menuActiveMobile}">
+    <div>
+        <p-dialog header="Cambio de contraseña" [(visible)]="passwordExpired" 
+                modal="modal" showEffect="fade" [style]="{width: '450px'}" appendTo="body">
+            <p>Por razones de seguridad, necesita cambiar su contraseña.</p>
+            <div class="ui-g form-group">
+                <div class="ui-g-12 ui-md-5">
+                    <label for="passwordChange">Contraseña anterior</label>
+                </div>
+                <div class="ui-g-12 ui-md-7">
+                    <app-input id='passwordChange' [formGroup]='passwordChange' [obfuscated]=true [feedback]=false></app-input>
+                </div>
+                <div class="ui-g-12 ui-md-5">
+                    <label for="newPasswordChange">Contraseña nueva</label>
+                </div>
+                <div class="ui-g-12 ui-md-7">
+                    <app-input id='newPasswordChange' [formGroup]='passwordChange' [obfuscated]=true [feedback]=false></app-input>
+                </div>
+                <div class="ui-g-12 ui-md-5">
+                    <label for="newPasswordChangeReply">Repita Contraseña nueva</label>
+                </div>
+                <div class="ui-g-12 ui-md-7">
+                    <app-input id='newPasswordChangeReply' [formGroup]='passwordChange' [obfuscated]=true [feedback]=false></app-input>
+                </div>
+            </div>
+            <p-footer>
+                <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                    <button type="button" pButton icon="fa fa-close" (click)="passwordExpired=false" label="Cancelar"></button>
+                    <button type="button" pButton icon="fa fa-check" (click)="changePassword()" label="Aceptar"></button>
+                </div>
+            </p-footer>
+        </p-dialog>
+        <p-toast key="generalMessages" [style]="{marginTop: '70px'}"></p-toast>
+    </div>
+    
     <div class="topbar clearfix">
+        
         <a id="omega-menu-button" href="#" (click)="toggleMenu($event)">
             <span class="fa fa-bars"></span>
         </a>
@@ -8,30 +43,46 @@
             <span class="fa fa-ellipsis-h"></span>
         </a>
         <div id="topbar-icons" class="animated" [ngClass]="{'topbar-icons-visible flipInX':topMenuActive,'flipOutX':topMenuLeaving}">
-            <span class="topbar-search" (click)="onSearchClick()">
-                <app-input id='username' [formGroup]='formGroup' placeholder="Usuario"  [feedback]=false></app-input>
-            </span>
-            <span class="topbar-search" (click)="onSearchClick()">
-                <app-input id='password' [formGroup]='formGroup' [obfuscated]=true placeholder="Contraseña" [feedback]=false></app-input>
-            </span>
-            <span class="topbar-search" >
-                <button pButton type="submit" label="Ingresar" [disabled]="!formGroup.valid"
-                            style="margin-bottom:10px" class="ui-button-success" (click)="onSubmit()"></button>
-            </span>
-            <!-- Esto deberia estar condicionado a que ya este logueado-->
-            <a href="#">
-                <span class="topbar-item-text">Messages</span>
-                <span class="topbar-icon fa fa-envelope-o animated swing"></span>
-                <span class="topbar-badge animated rubberBand">5</span>
-            </a>
-            <a href="#">
-                <span class="topbar-item-text">Settings</span>
-                <span class="topbar-icon fa fa-gear"></span>
-            </a>
-            <a href="#">
-                <span class="topbar-item-text">User</span>
-                <span class="topbar-icon fa fa-user"></span>
-            </a>
+            <div *ngIf='!isAuthenticated() && isLoginAvaiable()'>
+                <span class="topbar-search" (click)="onSearchClick()">
+                    <app-input id='username' [formGroup]='formGroup' placeholder="Usuario"  [feedback]=false></app-input>
+                </span>
+                <span class="topbar-search" (click)="onSearchClick()">
+                    <app-input id='password' [formGroup]='formGroup' [obfuscated]=true placeholder="Contraseña" [feedback]=false></app-input>
+                </span>
+                <span>
+                    <a href="#" (click)="onLogin()">
+                        <span class="topbar-item-text">Ingresar</span>
+                        <span class="topbar-icon fa fa-fw fa-sign-in"></span>
+                    </a>
+                </span>
+                <span  >
+                    <a href="/#/users/registration" >
+                        <span class="topbar-item-text">User</span>
+                        <span class="topbar-icon fa fa-user"></span>
+                    </a>
+                </span>
+            </div>
+            <div *ngIf='isAuthenticated()'> 
+                <a href="/#/users/list">
+                    <span class="topbar-item-text">User</span>
+                    <span class="topbar-icon fa fa-users"></span>
+                </a>
+
+                <a href="#">
+                    <span class="topbar-item-text">Messages</span>
+                    <span class="topbar-icon fa fa-envelope-o animated swing"></span>
+                    <span class="topbar-badge animated rubberBand">5</span>
+                </a>
+                <a href="#">
+                    <span class="topbar-item-text">Settings</span>
+                    <span class="topbar-icon fa fa-gear"></span>
+                </a>
+                <a href="#" (click)="onLogout()">
+                    <span class="topbar-item-text">Salir</span>
+                    <span class="topbar-icon fa fa-fw fa-sign-out"></span>
+                </a>
+            </div>
         </div>
     </div>
     <div class="sidebar" (click)="onMenuClick()">
@@ -49,7 +100,7 @@
                     <ul [@submenu]="profileActive ? 'visible' : 'hidden'">
                         <li><a href="#"><i class="fa fa-fw fa-sliders"></i><span>Account</span></a></li>
                         <li><a href="#"><i class="fa fa-fw fa-bell"></i><span>Notifications</span><span class="menu-badge">2</span></a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-sign-out"></i><span>Logout</span></a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-sign-out" ></i><span>Logout</span></a></li>
                     </ul>
                 </div>
                 <app-menu></app-menu>
@@ -57,6 +108,9 @@
         </p-scrollPanel>
     </div>
     <div class="main">
+        <div *ngIf='isExecuting()'>
+            <p-progressBar   mode="indeterminate"></p-progressBar>
+        </div>
         <router-outlet></router-outlet>
     </div>
     <div class="footer">

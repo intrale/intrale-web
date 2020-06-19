@@ -15,12 +15,18 @@ import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
 
-import { UserCreateComponent } from './users/usercreate.component'
+import {RegistrationComponent} from './views/users/registration/registration.component'
+import {UsersListComponent} from './views/users/list/userslist.component' 
+import {EditUserComponent} from './views/users/edit/edituser.component' 
 
 export const routes: Routes = [
     {path: '', component: DashboardDemoComponent},
     {path: 'sample', component: SampleDemoComponent},
-    {path: 'users/create', component: UserCreateComponent},
+
+    {path: 'users/registration', component: RegistrationComponent},
+    {path: 'users/list', component: UsersListComponent},
+    {path: 'users/edit/:username', component: EditUserComponent},
+
     {path: 'forms', component: FormsDemoComponent},
     {path: 'data', component: DataDemoComponent},
     {path: 'panels', component: PanelsDemoComponent},

@@ -11,7 +11,7 @@
             </div>
             <div class="card no-margin">
                 <h1>Creación de usuarios</h1>
-                <form [formGroup]="userform" (ngSubmit)="onSubmit()">
+                <!--form [formGroup]="userform" (ngSubmit)="onSubmit()" -->
                 <div class="ui-g form-group">
                     <div class="ui-g-12 ui-md-2">
                         <label for="input">Nombres *</label>
@@ -41,13 +41,19 @@
                         <label for="password">Contraseña</label>
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <app-input id='password' [formGroup]='userform' isPassword='true'></app-input>
+                        <app-input id='password' [formGroup]='userform' [obfuscated]=true></app-input>
                     </div>
                     <div class="ui-g-12 ui-md-2">
                         <label for="password">Reescriba Contraseña</label>
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <app-input id='rewritedPassword' [formGroup]='userform' isPassword='true'></app-input>
+                        <app-input id='rewritedPassword' [formGroup]='userform' [obfuscated]=true></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="username">Nombre de usuario</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='username' [formGroup]='userform' ></app-input>
                     </div>
                     <div class="ui-g-12 ui-md-2">
                         <label for="calendar">Fecha de nacimiento</label>
@@ -55,11 +61,7 @@
                     <div class="ui-g-12 ui-md-4">
                         <p-calendar id="birthdate"></p-calendar>
                     </div>
-                    <div class="ui-g-12 ui-md-2">
-                    </div>
-                    <div class="ui-g-12 ui-md-4">
-
-                    </div>
+                    
                     <div class="ui-g-12 ui-md-2">
                         <label for="input">(*) campos obligatorios</label>
                     </div>
@@ -68,11 +70,12 @@
                     <div class="ui-g-12 ui-md-2">
                     </div>
                     <div class="ui-g-12 ui-md-4">
-                        <button pButton type="submit" label="Enviar" [disabled]="!userform.valid"
-                            style="margin-bottom:10px" class="ui-button-success"></button>
+                        <button pButton type="submit" label="Enviar" [disabled]="!isSignUpAvaiable()"
+                            style="margin-bottom:10px" class="ui-button-success"
+                            (click)="onRegister()" ></button>
                     </div>
                 </div>
-                </form>
+                <!--/form-->
             </div>
         </div>
     </div>

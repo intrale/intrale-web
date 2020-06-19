@@ -1,0 +1,78 @@
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+                <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+                <ul>
+                    <li>
+                        <span class="ui-messages-summary" style="font-size:16px">Este formulario permite editar usuarios que luego podran ser utilizados dentro de la aplicacion.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card no-margin">
+                <h1>Edición de usuarios</h1>
+                <!--form [formGroup]="userform" (ngSubmit)="onSubmit()" -->
+                <div class="ui-g form-group">
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">Nombres *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='firstname' [formGroup]='userform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">Apellidos *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='surname' [formGroup]='userform' ></app-input>
+                    </div>
+                
+                
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="username">Nombre de usuario</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='username' [formGroup]='userform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                    
+                    <div class="ui-g-12 ui-md-12">
+                        <div class="card card-w-title">
+                            <h1>Grupos</h1>
+                            <p-pickList 
+                                [showSourceControls] = false [showTargetControls] = false
+                                [source]="sourceGroups" [target]="targetGroups" 
+                                sourceHeader="Disponibles" targetHeader="Seleccionados" [responsive]="true"
+                                [sourceStyle]="{'height':'250px'}" [targetStyle]="{'height':'250px'}">
+                                <ng-template let-group pTemplate="item">
+                                    <div class="ui-helper-clearfix">
+                                        <!--img src="assets/demo/images/car/{{car.brand}}.gif" style="display:inline-block;margin:2px 0 2px 2px"/ -->
+                                        <div style="font-size:14px;float:right;margin:15px 5px 0 0">
+                                            {{group.name}} - {{group.description}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-pickList>
+                        </div>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">(*) campos obligatorios</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <button pButton type="submit" label="Enviar" [disabled]="!isSignUpAvaiable()"
+                            style="margin-bottom:10px" class="ui-button-success"
+                            (click)="onSubmit()" ></button>
+                    </div>
+
+                </div>
+                <!--/form-->
+            </div>
+        </div>
+    </div>
+</div>

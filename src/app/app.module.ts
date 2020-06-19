@@ -92,16 +92,21 @@ import {ChartsDemoComponent} from './demo/view/chartsdemo.component';
 import {FileDemoComponent} from './demo/view/filedemo.component';
 import {UtilsDemoComponent} from './demo/view/utilsdemo.component';
 import {DocumentationComponent} from './demo/view/documentation.component';
-import {UserCreateComponent} from './users/usercreate.component'
 
 import {CarService} from './demo/service/carservice';
 import {CountryService} from './demo/service/countryservice';
 import {EventService} from './demo/service/eventservice';
 import {NodeService} from './demo/service/nodeservice';
 
+
+import {RegistrationComponent} from './views/users/registration/registration.component'
+import {UsersListComponent} from './views/users/list/userslist.component'
+import {EditUserComponent} from './views/users/edit/edituser.component'
+
 import { InputComponent } from './components/input/input.component'
 import { ErrorsComponent } from './components/errors.component'
 
+import {AppState} from 'src/app/config/appstate'
 
 @NgModule({
     imports: [
@@ -199,11 +204,14 @@ import { ErrorsComponent } from './components/errors.component'
         FileDemoComponent,
         UtilsDemoComponent,
         DocumentationComponent,
-        UserCreateComponent,
 
-        ErrorsComponent,
+        RegistrationComponent,
+        UsersListComponent,
+        EditUserComponent,
 
         InputComponent,
+        ErrorsComponent,
+
         
     ],
     providers: [
