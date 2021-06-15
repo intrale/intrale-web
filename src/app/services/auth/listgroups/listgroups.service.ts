@@ -14,7 +14,7 @@ import { AppState } from 'src/app/config/appstate';
 @Injectable()
 export class ListGroupsService extends Service<ListGroupsRequest, ListGroupsResponse>{
     protected getFunction(): string {
-        throw new Error('Method not implemented.');
+        return "readGroups";
     }
     
     constructor(protected httpClient: HttpClient, 
