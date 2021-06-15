@@ -1,9 +1,9 @@
 import { Request } from '../../../models/request'
 
 export interface SignInRequest extends Request {
-	name:string,
+	name:string;
 	familyName:string;
-    username: string;
+    email: string;
 	password: string;
 	newPassword: string;
 }

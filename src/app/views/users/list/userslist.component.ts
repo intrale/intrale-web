@@ -10,6 +10,7 @@ import {DeleteUserService} from 'src/app/services/auth/deleteuser/deleteuser.ser
 import {DeleteUserRequest} from 'src/app/services/auth/deleteuser/deleteuser.request'
 
 import { User } from 'src/app/models/user';
+import { ListUsersRequest } from 'src/app/services/auth/listusers/listusers.request';
 
 @Component({
     templateUrl: './userslist.component.html',
@@ -30,12 +31,14 @@ export class UsersListComponent implements OnInit  {
 
     ngOnInit() {
         this.cols = [
-            { field: 'name', header: 'Usuario' },
+            { field: 'email', header: 'Email' },
+            { field: 'name', header: 'Nombre' },
+            { field: 'familyName', header: 'Apellido' },
             { field: 'status', header: 'Estado' }
         ];
  
         setTimeout(()=> {
-            this.listUsersService.execute({}).subscribe(
+            this.listUsersService.execute({} as ListUsersRequest).subscribe(
                 data => {
                     this.users = data.users;
                 }
@@ -58,7 +61,7 @@ export class UsersListComponent implements OnInit  {
                 ).subscribe(
                     value => {
                         if (this.deleteUserService.hasErrors(value)){
-                            this.listUsersService.execute({}).subscribe(
+                            this.listUsersService.execute({} as ListUsersRequest).subscribe(
                                 data => {
                                     this.users = data.users;
                                     this.router.navigate(['/#/users/list'])

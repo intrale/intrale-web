@@ -14,6 +14,7 @@ import { EditUserRequest } from 'src/app/services/auth/edituser/edituser.request
 
 import { ActivatedRoute, Router  } from '@angular/router';
 import { Group } from 'src/app/models/group';
+import { User } from 'src/app/models/user';
 
 @Component({
     templateUrl: './edituser.component.html',
@@ -40,26 +41,31 @@ export class EditUserComponent implements OnInit {
     ngOnInit() {
         
         this.userform = this.fb.group({
-            username: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9_-]{8,15}$')]),
-            firstname: new FormControl('', null /*Validators.required*/),
-            surname: new FormControl('', null /*Validators.required*/)
+            email: new FormControl('', [Validators.required, Validators.email]),
+            name: new FormControl('', null /*Validators.required*/),
+            familyName: new FormControl('', null /*Validators.required*/)
         });
 
         this.activatedRoute.paramMap.subscribe(params => {
             setTimeout(()=> {
                 this.getUserService.execute(
                     {
-                        'username' : params.get('username') 
+                        'email' : params.get('email') 
                     } as GetUserRequest
                 ).subscribe(
                     value => {
-                        this.targetGroups = value.groups;
+                        var user = value.users[0];
+                        console.log('Retornando del GetUser');
+                        console.log('value.name:' + user.name);
+                        console.log('value.familyName:' + user.familyName);
+                        console.log('value.email:' + user.email);
+                        //this.targetGroups = value.groups;
                         // filtrar el source con este resultado
 
                         this.userform.setValue({ 
-                            'firstname': value.name,
-                            'surname': value.familyName,
-                            'username' : value.username 
+                            'name': user.name,
+                            'familyName': user.familyName,
+                            'email' : user.email 
                         });
                     }
                 )
@@ -97,13 +103,20 @@ export class EditUserComponent implements OnInit {
 
         this.editUserService.execute(
             {
-                username: this.userform.get('username').value,
+                email: this.userform.get('email').value,
                 groups: groups                
             } as EditUserRequest)
             .subscribe(
                 value=> { 
                     if(!this.editUserService.hasErrors(value)){
-                        this.router.navigate(['/users/list']);
+
+
+
+                        this.router.navigate(['/first-component']);
+
+
+
+                        
                     }
                 }, 
                 error => { },

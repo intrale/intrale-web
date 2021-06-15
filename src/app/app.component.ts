@@ -11,6 +11,8 @@ import { SignInResponse } from './services/auth/signin/signin.response'
 
 import Endpoints from './config/endpoints.json'
 import { AppState } from './config/appstate';
+import { Error } from './models/error';
+import { ServiceError } from './services/serviceError'
 
 @Component({
     selector: 'app-root',
@@ -178,28 +180,29 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
             this.loginExecuted = true;
             this.signinService.execute(
                 {
-                    username: this.formGroup.get('username').value,
+                    email: this.formGroup.get('username').value,
                     password: this.formGroup.get('password').value
                 } as SignInRequest)
                 .subscribe(
                     value=> { 
-                        this.passwordExpired = this.signinService.hasError(value, 'NEW_PASSWORD_REQUIRED');
-
-                        // TODO: Evaluar si esto es mejor ponerlo en otro lugar
-                        if (!this.signinService.hasErrors(value)){
-                            localStorage.setItem('accessToken', value.accessToken);
-                            localStorage.setItem('refreshToken', value.refreshToken);
-                        }
+                        localStorage.setItem('accessToken', value.accessToken);
+                        localStorage.setItem('refreshToken', value.refreshToken);
+                        this.endCall();
                     }, 
-                    error => { },
-                    () => {
-                        // always on return with or without errors
-                        localStorage.setItem('username', this.formGroup.get('username').value);
-                        this.formGroup.get('username').reset();
-                        this.formGroup.get('password').reset();
-                        this.loginExecuted = false
+                    error => { 
+                        let serviceError:ServiceError = error;
+                        this.passwordExpired = serviceError.find('NEW_PASSWORD_REQUIRED');
+                        this.endCall();
                     });
         }
+    }
+
+    private endCall(){
+        // always on return with or without errors
+        localStorage.setItem('username', this.formGroup.get('username').value);
+        this.formGroup.get('username').reset();
+        this.formGroup.get('password').reset();
+        this.loginExecuted = false
     }
 
 
@@ -207,28 +210,27 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
         this.passwordExpired=false;
         this.signinService.execute(
             {
-                username: localStorage.getItem('username'),
+                email: localStorage.getItem('username'),
                 password: this.passwordChange.get('passwordChange').value,
                 newPassword : this.passwordChange.get('newPasswordChange').value
             } as SignInRequest)
             .subscribe(
                 value=> { 
-                    this.passwordExpired = this.signinService.hasError(value, 'NEW_PASSWORD_REQUIRED');
-
-                    // TODO: Evaluar si esto es mejor ponerlo en otro lugar
-                    if (!this.signinService.hasErrors(value)){
-                        localStorage.setItem('accessToken', value.accessToken);
-                        localStorage.setItem('refreshToken', value.refreshToken);
-                    }
+                    localStorage.setItem('accessToken', value.accessToken);
+                    localStorage.setItem('refreshToken', value.refreshToken);
+                    this.endChangeCall();
                 }, 
-                error => { },
-                () => {
-                     // always on return with or without errors
-                    this.formGroup.get('passwordChange').reset();
-                    this.formGroup.get('newPasswordChange').reset();
-                    this.formGroup.get('newPasswordChangeReply').reset();
-                    this.loginExecuted = false
+                error => { 
+                    this.endChangeCall();
                 });
+    }
+
+    endChangeCall(){
+        // always on return with or without errors
+        this.passwordChange.get('passwordChange').reset();
+        this.passwordChange.get('newPasswordChange').reset();
+        this.passwordChange.get('newPasswordChangeReply').reset();
+        this.loginExecuted = false
     }
 
     onLogout(){

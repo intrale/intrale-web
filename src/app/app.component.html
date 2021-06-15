@@ -85,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div class="sidebar" (click)="onMenuClick()">
+    <div class="sidebar" (click)="onMenuClick()" *ngIf='isAuthenticated()'>
         <p-scrollPanel #scroller [style]="{height: '100%'}">
             <div class="sidebar-scroll-content">
                 <div class="logo">

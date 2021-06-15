@@ -22,7 +22,11 @@ export class SignUpService extends Service<SignUpRequest, SignUpResponse>{
     }
 
     protected getEndpoint(): string {
-        return Endpoints.auth.signup;
+        return Endpoints.users;
+    }
+
+    protected getFunction(): string {
+        return 'signup';
     }
     
 }

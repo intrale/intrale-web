@@ -18,6 +18,7 @@ import {DocumentationComponent} from './demo/view/documentation.component';
 import {RegistrationComponent} from './views/users/registration/registration.component'
 import {UsersListComponent} from './views/users/list/userslist.component' 
 import {EditUserComponent} from './views/users/edit/edituser.component' 
+import { CreateProductComponent } from './views/products/create/createProduct.component';
 
 export const routes: Routes = [
     {path: '', component: DashboardDemoComponent},
@@ -25,7 +26,9 @@ export const routes: Routes = [
 
     {path: 'users/registration', component: RegistrationComponent},
     {path: 'users/list', component: UsersListComponent},
-    {path: 'users/edit/:username', component: EditUserComponent},
+    {path: 'users/edit/:email', component: EditUserComponent},
+
+    {path: 'products/create' , component: CreateProductComponent},
 
     {path: 'forms', component: FormsDemoComponent},
     {path: 'data', component: DataDemoComponent},

@@ -5,14 +5,11 @@
             <p-table [columns]="cols" [value]="users" 
                 selectionMode="single" dataKey="vin" [(selection)]="selectedCar"
                      [paginator]="true" [rows]="10" [responsive]="true">
-                <ng-template pTemplate="caption">
-                    Lista de usuarios
-                </ng-template>
+                <ng-template pTemplate="caption">Lista de usuarios</ng-template>
                 <ng-template pTemplate="header" let-columns>
                     <tr>
                         <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-                          {{col.header}}
-                          <p-sortIcon [field]="col.field"></p-sortIcon>
+                          {{col.header}} <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>
                         <th>Acciones</th>
                     </tr>
@@ -24,15 +21,13 @@
                         </td>
                         <td>
                             <span  >
-                                <a href="{{'/#/users/edit/' + rowData.name}}"  >
-                                    <!--span class="topbar-item-text">User</span -->
+                                <a href="{{'/#/users/edit/' + rowData.email}}"  >
                                     <span class="topbar-icon fa fa-pencil-square-o"></span>
                                 </a>
                             </span>
                             <span></span>
                             <span  >
-                                <a  (click)="onDelete(rowData.name)" >
-                                    <!--span class="topbar-item-text">User</span -->
+                                <a  (click)="onDelete(rowData.email)" >
                                     <span class="topbar-icon fa fa-trash"></span>
                                 </a>
                             </span>

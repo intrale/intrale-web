@@ -1,0 +1,76 @@
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+                <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+                <ul>
+                    <li>
+                        <span class="ui-messages-summary" style="font-size:16px">
+                            Este formulario permite dar de alta nuevos productos 
+                            que luego podran ser utilizados dentro de la aplicacion.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card no-margin">
+                <h1>Alta de Productos</h1>
+                <div class="ui-g form-group">
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="name">Nombre *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='name' [formGroup]='productform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="description">Descripcion *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='description' [formGroup]='productform' ></app-input>
+                    </div>
+                
+                
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="details">Detalles</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='details' [formGroup]='productform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="stock">Stock</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='stock' [formGroup]='productform' ></app-input>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="price">Precio</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='price' [formGroup]='productform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                   
+
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">(*) campos obligatorios</label>
+                    </div>
+
+
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <button pButton type="submit" label="Enviar" [disabled]="!isAvaiable()"
+                            style="margin-bottom:10px" class="ui-button-success"
+                            (click)="onSubmit()" ></button>
+                    </div>
+
+                </div>
+                <!--/form-->
+            </div>
+        </div>
+    </div>
+</div>

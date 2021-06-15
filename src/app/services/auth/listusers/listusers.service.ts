@@ -13,6 +13,9 @@ import { AppState } from 'src/app/config/appstate';
 
 @Injectable()
 export class ListUsersService extends Service<ListUsersRequest, ListUsersResponse>{
+    protected getFunction(): string {
+        return 'read';
+    }
     
     constructor(protected httpClient: HttpClient, 
         protected messageService: MessageService, 
@@ -22,7 +25,7 @@ export class ListUsersService extends Service<ListUsersRequest, ListUsersRespons
     }
 
     protected getEndpoint(): string {
-        return Endpoints.auth.listusers;
+        return Endpoints.users;
     }
     
 }

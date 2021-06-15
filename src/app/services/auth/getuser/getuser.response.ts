@@ -1,12 +1,9 @@
 import { Response } from '../../../models/response'
 import { Group } from 'src/app/models/group';
+import { User } from 'src/app/models/user';
 
 export interface GetUserResponse extends Response {
 
-    username: string,
-    name: string,
-    familyName: string,
-    email: string,
-    groups: Group[];
+    users: User[];
     
 }

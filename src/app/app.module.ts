@@ -107,6 +107,7 @@ import { InputComponent } from './components/input/input.component'
 import { ErrorsComponent } from './components/errors.component'
 
 import {AppState} from 'src/app/config/appstate'
+import { CreateProductComponent } from './views/products/create/createProduct.component';
 
 @NgModule({
     imports: [
@@ -211,6 +212,8 @@ import {AppState} from 'src/app/config/appstate'
 
         InputComponent,
         ErrorsComponent,
+
+        CreateProductComponent,
 
         
     ],

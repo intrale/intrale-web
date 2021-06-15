@@ -23,6 +23,10 @@ export class AppMenuComponent implements OnInit {
                 {label: 'Listado de usuarios', icon: 'fa fa-fw fa-list', routerLink: ['/users/list']}
 
             ]},
+            {label: 'Productos', icon: 'fa fa-fw fa-user', items: [
+                {label: 'Alta de productos', icon: 'fa fa-fw fa-add', routerLink: ['/products/create']}
+
+            ]},
             {
                 label: 'Components', icon: 'fa fa-fw fa-home', badge: '2',
                 items: [

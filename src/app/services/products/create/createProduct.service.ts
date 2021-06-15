@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/primeng';
 
-import { ListGroupsResponse } from './listgroups.response';
-import { ListGroupsRequest } from './listgroups.request';
+import { CreateProductResponse } from './createProduct.response';
+import { CreateProductRequest } from './createProduct.request';
 
 import Endpoints from '../../../config/endpoints.json'
 import { Service } from '../../service';
@@ -12,10 +12,7 @@ import { AppState } from 'src/app/config/appstate';
 
 
 @Injectable()
-export class ListGroupsService extends Service<ListGroupsRequest, ListGroupsResponse>{
-    protected getFunction(): string {
-        throw new Error('Method not implemented.');
-    }
+export class CreateProductService extends Service<CreateProductRequest, CreateProductResponse>{
     
     constructor(protected httpClient: HttpClient, 
         protected messageService: MessageService, 
@@ -25,7 +22,11 @@ export class ListGroupsService extends Service<ListGroupsRequest, ListGroupsResp
     }
 
     protected getEndpoint(): string {
-        return Endpoints.users;
+        return Endpoints.product;
     }
     
+    
+    protected getFunction(): string {
+        return 'create';
+    }
 }

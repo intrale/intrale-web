@@ -13,6 +13,9 @@ import { AppState } from 'src/app/config/appstate';
 
 @Injectable()
 export class GetUserService extends Service<GetUserRequest, GetUserResponse>{
+    protected getFunction(): string {
+        return 'read';
+    }
     
     constructor(protected httpClient: HttpClient, 
         protected messageService: MessageService, 
@@ -22,7 +25,7 @@ export class GetUserService extends Service<GetUserRequest, GetUserResponse>{
     }
 
     protected getEndpoint(): string {
-        return Endpoints.auth.getuser;
+        return Endpoints.users;
     }
     
 }

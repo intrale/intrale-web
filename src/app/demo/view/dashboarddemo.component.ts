@@ -12,6 +12,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 })
 export class DashboardDemoComponent implements OnInit {
 
+    selectedCar: Car;
+    
     cities: SelectItem[];
 
     cars: Car[];
@@ -25,8 +27,6 @@ export class DashboardDemoComponent implements OnInit {
     selectedCity: any;
 
     scheduleHeader: any;
-
-    selectedCar: Car;
 
     fullcalendarOptions: any;
 
@@ -84,5 +84,11 @@ export class DashboardDemoComponent implements OnInit {
                 left: 'title'
             }
         };
+    }
+
+    
+    isAuthenticated(): boolean{
+        let token = localStorage.getItem('accessToken');
+        return (token && token.trim().length>0)
     }
 }

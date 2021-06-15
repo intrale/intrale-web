@@ -1,6 +1,6 @@
 import { Request } from '../../../models/request'
 
 export interface EditUserRequest extends Request {
-    username:string;
+    email:string;
     groups:string[];
 }
