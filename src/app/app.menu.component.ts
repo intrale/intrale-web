@@ -24,7 +24,8 @@ export class AppMenuComponent implements OnInit {
 
             ]},
             {label: 'Productos', icon: 'fa fa-fw fa-user', items: [
-                {label: 'Alta de productos', icon: 'fa fa-fw fa-add', routerLink: ['/products/create']}
+                {label: 'Alta de productos', icon: 'fa fa-fw fa-add', routerLink: ['/products/create']},
+                {label: 'Listado de productos', icon: 'fa fa-fw fa-list', routerLink: ['/products/list']}
 
             ]},
             {

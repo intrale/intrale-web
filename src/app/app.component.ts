@@ -77,10 +77,11 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
             newPasswordChangeReply: new FormControl('', Validators.required)
         });
         this.passwordExpired = false;
+        console.log('deviceId home:' + (<any>document.getElementById('deviceId')).value);
     }
 
     ngAfterViewInit() {
-        setTimeout(() => {this.scrollerViewChild.moveBar(); }, 100);
+        //setTimeout(() => {this.scrollerViewChild.moveBar(); }, 100);
 
         // hides the overlay menu and top menu if outside is clicked
         this.documentClickListener = this.renderer.listen('body', 'click', (event) => {
@@ -149,7 +150,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
     onMenuClick() {
         this.menuClick = true;
 
-        setTimeout(() => {this.scrollerViewChild.moveBar(); }, 500);
+        //setTimeout(() => {this.scrollerViewChild.moveBar(); }, 500);
     }
 
     isDesktop() {

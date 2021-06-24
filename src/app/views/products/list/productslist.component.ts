@@ -13,10 +13,10 @@ import { User } from 'src/app/models/user';
 import { ListUsersRequest } from 'src/app/services/auth/listusers/listusers.request';
 
 @Component({
-    templateUrl: './userslist.component.html',
+    templateUrl: './productslist.component.html',
     providers:[ListUsersService, ConfirmationService, DeleteUserService]
 })
-export class UsersListComponent implements OnInit  {
+export class ProductsListComponent implements OnInit  {
 
     cols: any[];
 

@@ -1,0 +1,72 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <!--div class="ui-g-12 ui-lg-6"-->
+            <!-- Left Side -->
+            <div class="card card-w-title">
+                <h1>Tienda e-commerce</h1>
+                <p-dataView #dv [value]="products" [paginator]="true" [rows]="10" paginatorPosition="both" filterBy="title">
+                    <p-header>
+                        <div class="ui-helper-clearfix">
+                            <div class="ui-g">
+                                <div class="ui-g-12 ui-md-6">
+                                    <div style="position:relative">
+                                        <input type="search" pInputText placeholder="Buscar por nombre" (keyup)="dv.filter($event.target.value)">
+                                    </div>
+                                </div>
+                                <div class="ui-g-12 ui-md-6" style="text-align:right">
+                                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                                </div>
+                            </div>
+                        </div>
+                    </p-header>
+                    <ng-template let-product pTemplate="listItem">
+                        <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                            <div class="ui-g-12 ui-md-3" style="text-align:center">
+                                <img src="{{product.picture_url}}.webp">
+                            </div>
+                            <div class="ui-g-12 ui-md-8 car-details">
+                                <div class="ui-g">
+                                    <div class="ui-g-2 ui-sm-6">Id: </div>
+                                    <div class="ui-g-10 ui-sm-6">
+                                        <b>{{product.id}}</b>
+                                    </div>
+
+                                    <div class="ui-g-2 ui-sm-6">Nombre: </div>
+                                    <div class="ui-g-10 ui-sm-6">
+                                        <b>{{product.title}}</b>
+                                    </div>
+
+                                    <div class="ui-g-2 ui-sm-6">Descripcion: </div>
+                                    <div class="ui-g-10 ui-sm-6">
+                                        <b>{{product.description}}</b>
+                                    </div>
+
+                                    <div class="ui-g-2 ui-sm-6">Precio: </div>
+                                    <div class="ui-g-10 ui-sm-6">
+                                        <b>${{product.unit_price}}</b>
+                                    </div>
+                                    <div class="ui-g-2 ui-sm-6"></div>
+                                    <div class="ui-g-10 ui-sm-6">
+                                        <button pButton type="button" (click)="onSubmit(product)" >Comprar</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-car pTemplate="gridItem">
+                        <div style="padding:.5em" class="ui-g-12 ui-md-3">
+                            <p-panel [header]="product.id" [style]="{'text-align':'center'}">
+                                <img src="{{product.picture_url}} - Grande.webp">
+                                <!--div class="car-detail">{{car.year}} - {{car.color}}</div-->
+                                <hr class="ui-widget-content" style="border-top:0">
+                                <button pButton type="button" icon="pi pi-search" style="margin-top:0"></button>
+                            </p-panel>
+                        </div>
+                    </ng-template>
+                </p-dataView>
+            </div>
+        <!--/div-->
+
+    </div>
+</div>

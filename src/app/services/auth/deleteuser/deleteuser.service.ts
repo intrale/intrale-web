@@ -14,7 +14,7 @@ import { AppState } from 'src/app/config/appstate';
 @Injectable()
 export class DeleteUserService extends Service<DeleteUserRequest, DeleteUserResponse>{
     protected getFunction(): string {
-        throw new Error('Method not implemented.');
+        return "delete";
     }
     
     constructor(protected httpClient: HttpClient, 

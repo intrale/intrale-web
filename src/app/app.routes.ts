@@ -19,9 +19,15 @@ import {RegistrationComponent} from './views/users/registration/registration.com
 import {UsersListComponent} from './views/users/list/userslist.component' 
 import {EditUserComponent} from './views/users/edit/edituser.component' 
 import { CreateProductComponent } from './views/products/create/createProduct.component';
+import { ProductsListComponent } from './views/products/list/productslist.component';
+
+import {DashboardComponent} from './views/dashboard/dashboard.component'
+import { PayProductComponent } from './views/products/pay/payProduct.component';
+import { PayResultProductComponent } from './views/products/pay/result/payResultProduct.component';
 
 export const routes: Routes = [
-    {path: '', component: DashboardDemoComponent},
+    //{path: '', component: DashboardDemoComponent},
+    {path: '', component: DashboardComponent},
     {path: 'sample', component: SampleDemoComponent},
 
     {path: 'users/registration', component: RegistrationComponent},
@@ -29,7 +35,10 @@ export const routes: Routes = [
     {path: 'users/edit/:email', component: EditUserComponent},
 
     {path: 'products/create' , component: CreateProductComponent},
-
+    {path: 'products/list', component: ProductsListComponent},
+    {path: 'products/pay/:id', component: PayProductComponent},
+    {path: 'products/result/:state', component: PayResultProductComponent},
+ 
     {path: 'forms', component: FormsDemoComponent},
     {path: 'data', component: DataDemoComponent},
     {path: 'panels', component: PanelsDemoComponent},

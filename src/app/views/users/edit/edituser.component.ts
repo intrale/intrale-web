@@ -1,3 +1,5 @@
+import * as _ from 'lodash'
+
 import {Component, OnInit} from '@angular/core';
 import {Validators,FormControl,FormGroup,FormBuilder, Form, AbstractControl} from '@angular/forms';
 
@@ -15,6 +17,7 @@ import { EditUserRequest } from 'src/app/services/auth/edituser/edituser.request
 import { ActivatedRoute, Router  } from '@angular/router';
 import { Group } from 'src/app/models/group';
 import { User } from 'src/app/models/user';
+import { group } from '@angular/animations';
 
 @Component({
     templateUrl: './edituser.component.html',
@@ -25,8 +28,8 @@ export class EditUserComponent implements OnInit {
 
     userform: FormGroup;
     executed: boolean = false;
-    sourceGroups: Group[];
-    targetGroups: Group[];
+    sourceGroups: Group[] = [];
+    targetGroups: Group[] = [];
  
     constructor( 
         private fb: FormBuilder, 
@@ -55,12 +58,28 @@ export class EditUserComponent implements OnInit {
                 ).subscribe(
                     value => {
                         var user = value.users[0];
-                        console.log('Retornando del GetUser');
-                        console.log('value.name:' + user.name);
-                        console.log('value.familyName:' + user.familyName);
-                        console.log('value.email:' + user.email);
-                        //this.targetGroups = value.groups;
+                        this.targetGroups = user.groups;
+                        if (!this.targetGroups){
+                            this.targetGroups = [];
+                        }
                         // filtrar el source con este resultado
+                        this.listGroupsService.execute(
+                            {
+                                
+                            } as ListGroupsRequest)
+                            .subscribe(
+                                value=> { 
+                                    this.sourceGroups = 
+                                    _.remove(value.groups, source => {
+                                        return !_.find(this.targetGroups, target => {
+                                            return target.name == source.name;
+                                        });
+                                    })
+                                }, 
+                                error => { },
+                                () => {
+                                    
+                                });
 
                         this.userform.setValue({ 
                             'name': user.name,
@@ -72,22 +91,6 @@ export class EditUserComponent implements OnInit {
             });
         })
 
-        setTimeout(()=> {
-            this.listGroupsService.execute(
-                {
-                    
-                } as ListGroupsRequest)
-                .subscribe(
-                    value=> { 
-                        this.sourceGroups = value.groups;
-                    }, 
-                    error => { },
-                    () => {
-                        
-                    });
-            })
-
-
     }
 
     isSignUpAvaiable(){
@@ -97,26 +100,20 @@ export class EditUserComponent implements OnInit {
     onSubmit(){
         let groups:string[] = new Array();
         this.targetGroups.forEach((group: Group, index: number) => {
-            console.log('iterando grupos:' + group.name);
             groups.push(group.name);
         })
 
         this.editUserService.execute(
             {
                 email: this.userform.get('email').value,
+                name: this.userform.get('name').value,
+                familyName: this.userform.get('familyName').value,
                 groups: groups                
             } as EditUserRequest)
             .subscribe(
                 value=> { 
                     if(!this.editUserService.hasErrors(value)){
-
-
-
-                        this.router.navigate(['/first-component']);
-
-
-
-                        
+                        this.router.navigate(['/users/list']);
                     }
                 }, 
                 error => { },

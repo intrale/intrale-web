@@ -1,0 +1,42 @@
+<div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+    <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+    <ul>
+        <li>
+            <span class="ui-messages-summary" style="font-size:16px">
+                Este formulario permite confirmar la compra del producto seleccionado.</span>
+        </li>
+    </ul>
+</div>
+<div *ngIf='product' class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+    <div class="ui-g-12 ui-md-3" style="text-align:center">
+            <img src="{{product.picture_url}}.webp">
+    </div>
+    <div class="ui-g-12 ui-md-8 car-details">
+        <div class="ui-g">
+            <div class="ui-g-2 ui-sm-6">Id: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{product.id}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">Nombre: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{product.title}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">Descripcion: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{product.description}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">Precio: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>${{product.unit_price}}</b>
+            </div>
+            <div class="ui-g-2 ui-sm-6"></div>
+            <div class="ui-g-10 ui-sm-6">
+                <button pButton type="button" (click)="onSubmit()" >Pagar la compra</button>
+            </div>
+        </div>
+        
+    </div>
+</div>

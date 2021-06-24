@@ -1,0 +1,63 @@
+<div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+    <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+    <ul>
+        <li>
+            <div *ngIf="state=='success'">
+                <span class="ui-messages-summary" style="font-size:16px">
+                    Confirmacion de la compra realizada.</span>
+            </div>
+            <div *ngIf="state=='pending'">
+                <span class="ui-messages-summary" style="font-size:16px">
+                    La compra realizada quedo pendiente del pago.</span>
+            </div>
+            <div *ngIf="state=='failure'">
+                <span class="ui-messages-summary" style="font-size:16px">
+                    La compra fue rechazada.</span>
+            </div>
+        </li>
+    </ul>
+</div>
+    <div class="ui-g-12 ui-md-12 car-details">
+        <div class="ui-g">
+            <div class="ui-g-2 ui-sm-6">collection_id: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{collection_id}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">collection_status: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{collection_status}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">external_reference: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{external_reference}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">payment_type: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{payment_type}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">preference_id: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{preference_id}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">site_id: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{site_id}}</b>
+            </div>
+
+            <div class="ui-g-2 ui-sm-6">processing_mode: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{processing_mode}}</b>
+            </div>
+            
+            <div class="ui-g-2 ui-sm-6">merchant_order_id: </div>
+            <div class="ui-g-10 ui-sm-6">
+                <b>{{merchant_order_id}}</b>
+            </div>
+        </div>
+        
+</div>

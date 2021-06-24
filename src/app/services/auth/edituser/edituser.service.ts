@@ -14,7 +14,7 @@ import { AppState } from 'src/app/config/appstate';
 @Injectable()
 export class EditUserService extends Service<EditUserRequest, EditUserResponse>{
     protected getFunction(): string {
-        throw new Error('Method not implemented.');
+        return 'update';
     }
     
     constructor(protected httpClient: HttpClient, 

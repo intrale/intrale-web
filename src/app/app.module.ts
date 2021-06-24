@@ -98,6 +98,7 @@ import {CountryService} from './demo/service/countryservice';
 import {EventService} from './demo/service/eventservice';
 import {NodeService} from './demo/service/nodeservice';
 
+import {DashboardComponent} from './views/dashboard/dashboard.component'
 
 import {RegistrationComponent} from './views/users/registration/registration.component'
 import {UsersListComponent} from './views/users/list/userslist.component'
@@ -108,6 +109,11 @@ import { ErrorsComponent } from './components/errors.component'
 
 import {AppState} from 'src/app/config/appstate'
 import { CreateProductComponent } from './views/products/create/createProduct.component';
+import { ProductsListComponent } from './views/products/list/productslist.component';
+
+import { ProductDummy } from './services/products/dummy/productDummy';
+import { PayProductComponent } from './views/products/pay/payProduct.component';
+import { PayResultProductComponent } from './views/products/pay/result/payResultProduct.component';
 
 @NgModule({
     imports: [
@@ -206,6 +212,8 @@ import { CreateProductComponent } from './views/products/create/createProduct.co
         UtilsDemoComponent,
         DocumentationComponent,
 
+        DashboardComponent,
+
         RegistrationComponent,
         UsersListComponent,
         EditUserComponent,
@@ -214,12 +222,16 @@ import { CreateProductComponent } from './views/products/create/createProduct.co
         ErrorsComponent,
 
         CreateProductComponent,
+        ProductsListComponent,
+        PayProductComponent,
+        PayResultProductComponent
+
 
         
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        CarService, CountryService, EventService, NodeService
+        CarService, CountryService, EventService, NodeService, ProductDummy
     ],
     bootstrap: [AppComponent]
 })
