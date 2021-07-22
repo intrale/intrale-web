@@ -53,6 +53,7 @@ export abstract class Service <REQ extends Request, RES extends Response> {
             .post<RES>(this.getEndpoint(), request, 
             {
                 headers: {
+                    //'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
                     'idtoken': 'Bearer ' + localStorage.getItem('idtoken'),

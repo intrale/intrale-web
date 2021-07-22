@@ -77,7 +77,6 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
             newPasswordChangeReply: new FormControl('', Validators.required)
         });
         this.passwordExpired = false;
-        console.log('deviceId home:' + (<any>document.getElementById('deviceId')).value);
     }
 
     ngAfterViewInit() {

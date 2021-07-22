@@ -3,7 +3,7 @@
         {
             "id": "1",
             "title": "Apple iPhone 11 (128 GB) - Negro",
-            "description": "Apple iPhone 11 (128 GB) - Negro",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/iPhone11",
             "unit_price": 90000,
             "quantity": 1,
@@ -12,7 +12,7 @@
         {
             "id": "2",
             "title": "Apple iPhone 12 (256 GB) - Negro",
-            "description": "Apple iPhone 12 (256 GB) - Negro",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/iPhone12",
             "unit_price": 130000,
             "quantity": 1,
@@ -21,7 +21,7 @@
         {
             "id": "3",
             "title": "iPhone SE (2nd Generation) 128 GB",
-            "description": "iPhone SE (2nd Generation) 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/iPhoneSE",
             "unit_price": 60000,
             "quantity": 1,
@@ -30,7 +30,7 @@
         {
             "id": "4",
             "title": "Moto G9 Power 128 GB",
-            "description": "Moto G9 Power 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/MotoG9",
             "unit_price": 36000,
             "quantity": 1,
@@ -39,7 +39,7 @@
         {
             "id": "5",
             "title": "Motorola Edge 256 GB gris midnight ",
-            "description": "Motorola Edge 256 GB gris midnight ",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/MotorolaEdge",
             "unit_price": 85000,
             "quantity": 1,
@@ -48,7 +48,7 @@
         {
             "id": "6",
             "title": "Samsung Galaxy A21s 128 GB",
-            "description": "Samsung Galaxy A21s 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/SamsungGalaxyA21s",
             "unit_price": 38000,
             "quantity": 1,
@@ -57,7 +57,7 @@
         {
             "id": "7",
             "title": "Samsung Galaxy A51 128 GB",
-            "description": "Samsung Galaxy A51 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/SamsungGalaxyA51",
             "unit_price": 48000,
             "quantity": 1,
@@ -66,7 +66,7 @@
         {
             "id": "8",
             "title": "Samsung Galaxy A72 128 GB",
-            "description": "Samsung Galaxy A72 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/SamsungGalaxyA72",
             "unit_price": 48000,
             "quantity": 1,
@@ -75,7 +75,7 @@
         {
             "id": "9",
             "title": "Samsung Galaxy S20 FE 128 GB",
-            "description": "Samsung Galaxy S20 FE 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/SamsungGalaxyS20",
             "unit_price": 82000,
             "quantity": 1,
@@ -84,7 +84,7 @@
         {
             "id": "10",
             "title": "Xiaomi Poco M3 Dual SIM 64 GB negro",
-            "description": "Xiaomi Poco M3 Dual SIM 64 GB negro",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/XiaomiPoco",
             "unit_price": 39000,
             "quantity": 1,
@@ -93,7 +93,7 @@
         {
             "id": "11",
             "title": "Xiaomi Redmi Note 9 Pro (64 Mpx) Dual SIM 128 GB",
-            "description": "Xiaomi Redmi Note 9 Pro (64 Mpx) Dual SIM 128 GB",
+            "description": "Dispositivo móvil de Tienda e-commerce",
             "picture_url": "/assets/img/XiaomiRedmiNote9",
             "unit_price": 60000,
             "quantity": 1,

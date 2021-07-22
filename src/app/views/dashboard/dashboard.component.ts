@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit  {
         this.productDummy.getProducts().then(products => {
             this.products = products;
             this.products.forEach(product=>{
-                product.picture_url = window.location.origin + product.picture_url
+                product.picture_url = window.location.origin + product.picture_url + ".webp";
             });
             console.log('Dashboard products:' + this.products.length);
 

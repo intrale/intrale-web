@@ -26,8 +26,8 @@ import { PayProductComponent } from './views/products/pay/payProduct.component';
 import { PayResultProductComponent } from './views/products/pay/result/payResultProduct.component';
 
 export const routes: Routes = [
-    //{path: '', component: DashboardDemoComponent},
-    {path: '', component: DashboardComponent},
+    {path: '', component: DashboardDemoComponent},
+    //{path: '', component: DashboardComponent},
     {path: 'sample', component: SampleDemoComponent},
 
     {path: 'users/registration', component: RegistrationComponent},

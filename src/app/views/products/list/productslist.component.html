@@ -3,7 +3,7 @@
         <div class="card card-w-title">
             <h1>Productos disponibles</h1>
             <p-table [columns]="cols" [value]="users" 
-                selectionMode="single" dataKey="vin" [(selection)]="selectedCar"
+                selectionMode="single" dataKey="vin" 
                      [paginator]="true" [rows]="10" [responsive]="true">
                 <ng-template pTemplate="caption">Lista de productos</ng-template>
                 <ng-template pTemplate="header" let-columns>

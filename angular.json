@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "omega-cli": {
+        "intrale-cli": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/omega",
+                        "outputPath": "dist/intrale",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -75,18 +75,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "omega-cli:build"
+                        "browserTarget": "intrale-cli:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "omega-cli:build:production"
+                            "browserTarget": "intrale-cli:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "omega-cli:build"
+                        "browserTarget": "intrale-cli:build"
                     }
                 },
                 "test": {
@@ -140,16 +140,16 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "omega-cli:serve"
+                        "devServerTarget": "intrale-cli:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "omega-cli:serve:production"
+                            "devServerTarget": "intrale-cli:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "omega-cli"
+    "defaultProject": "intrale-cli"
 }

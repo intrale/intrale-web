@@ -41,6 +41,8 @@ export class PayProductComponent implements OnInit {
                     products.forEach(actualProduct => {
                        if (actualProduct.id == this.id){
                            this.product = actualProduct;
+                           this.product.id = "1234";
+                           this.product.picture_url = window.location.origin + this.product.picture_url + ".webp";
                        } 
                     });
                 } 
@@ -91,6 +93,7 @@ export class PayProductComponent implements OnInit {
                 notification_url:'https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/mercadopago'
             } as unknown as CheckoutPreferencesRequest).subscribe(
             value => {
+                console.log(JSON.stringify(value));
                 window.location.href = value.init_point.toString();
 
             },
