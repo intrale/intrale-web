@@ -1,33 +1,51 @@
+
 <div class="ui-g">
+
     <div class="ui-g-12">
         <div class="card card-w-title">
             <h1>Productos disponibles</h1>
-            <p-table [columns]="cols" [value]="users" 
+  
+            <p-table [columns]="cols" [value]="products" 
                 selectionMode="single" dataKey="vin" 
                      [paginator]="true" [rows]="10" [responsive]="true">
-                <ng-template pTemplate="caption">Lista de productos</ng-template>
+                <ng-template pTemplate="caption"><button pButton type="submit" label="Crear Producto" 
+                    style="margin-bottom:10px" class="ui-button-success"
+                    (click)="create()" ></button></ng-template>
                 <ng-template pTemplate="header" let-columns>
                     <tr>
+                        <th>Imagen</th>
                         <th *ngFor="let col of columns" [pSortableColumn]="col.field">
                           {{col.header}} <p-sortIcon [field]="col.field"></p-sortIcon>
                         </th>
+                        <th>Moneda</th>
+                        <th>Valor</th>
                         <th>Acciones</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData let-columns="columns">
                     <tr [pSelectableRow]="rowData">
+                        <td>
+                            <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/products/{{rowData['id']}}/main.jpg" 
+                                            class="fit-image-30"/>
+                        </td>
                         <td *ngFor="let col of columns">
                           {{rowData[col.field]}}
                         </td>
                         <td>
+                          {{rowData['price'].currencyAcronym}}
+                        </td>
+                        <td>
+                            {{rowData['price'].unitPrice}}
+                        </td>
+                        <td>
                             <span  >
-                                <a href="{{'/#/users/edit/' + rowData.email}}"  >
+                                <a href="{{'/#/products/save/' + rowData.id}}"  >
                                     <span class="topbar-icon fa fa-pencil-square-o"></span>
                                 </a>
                             </span>
                             <span></span>
                             <span  >
-                                <a  (click)="onDelete(rowData.email)" >
+                                <a  (click)="onDelete(rowData.id)" >
                                     <span class="topbar-icon fa fa-trash"></span>
                                 </a>
                             </span>
@@ -37,6 +55,7 @@
             </p-table>
         </div>
     </div>
+ 
 </div>
 <p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle">
     <p-footer>

@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+.fit-image{
+    width: 100%;
+    object-fit: cover;
+    /*height: 300px;*/ /* only if you want fixed height */
+    }
+.fit-image-30{
+    width: 30%;
+    object-fit: cover;
+    /*height: 300px;*/ /* only if you want fixed height */
+    }

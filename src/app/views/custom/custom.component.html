@@ -1,0 +1,157 @@
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+                <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+                <ul>
+                    <li>
+                        <span class="ui-messages-summary" style="font-size:16px">
+                            Este formulario permite personalizar la aplicacion.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card no-margin">
+                <h1>Personalización de la aplicacion</h1>
+                <div class="ui-g form-group">
+
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Banner 1</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadBanner1($event)"
+                                auto="true"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="banner1File.length<=0">
+                                    <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/banners/banner1.jpg" 
+                                            class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                    </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Banner 2</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadBanner2($event)"
+                                auto="true"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="banner2File.length<=0">
+                                    <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/banners/banner2.jpg" 
+                                     class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                    </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Banner 3</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadBanner3($event)"
+                                auto="true"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="banner3File.length<=0">
+                                    <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/banners/banner3.jpg" 
+                                            class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                    </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Banner 4</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadBanner4($event)"
+                                auto="true"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="banner4File.length<=0">
+                                    <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/banners/banner4.jpg" 
+                                            class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                        </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Banner 5</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadBanner5($event)"
+                                auto="true"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="banner5File.length<=0">
+                                    <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/banners/banner5.jpg" 
+                                            class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                        </p-fileUpload>
+
+                    </div>                    
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">(*) campos obligatorios</label>
+                    </div>
+
+
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <button pButton type="submit" label="Enviar" [disabled]="!isAvaiable()"
+                            style="margin-bottom:10px" class="ui-button-success"
+                            (click)="onSubmit()" ></button>
+                    </div>
+
+                </div>
+                <!--/form-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -31,16 +31,16 @@ export class DashboardComponent implements OnInit  {
         console.log('Dashboard ngOnInit');
         this.productDummy.getProducts().then(products => {
             this.products = products;
-            this.products.forEach(product=>{
+            /*this.products.forEach(product=>{
                 product.picture_url = window.location.origin + product.picture_url + ".webp";
-            });
+            });*/
             console.log('Dashboard products:' + this.products.length);
 
         });
     }
 
     onSubmit(product: Product){
-        console.log('Quiere comprar :' + product.title);
+        //console.log('Quiere comprar :' + product.title);
         this.router.navigate(['products/pay', product.id]);
     }
 

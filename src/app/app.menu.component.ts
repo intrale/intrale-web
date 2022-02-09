@@ -18,16 +18,17 @@ export class AppMenuComponent implements OnInit {
     ngOnInit() {
         this.model = [
             {label: 'Dashboard', icon: 'fa fa-fw fa-home', routerLink: ['/']},
-            {label: 'Usuarios', icon: 'fa fa-fw fa-user', items: [
+            {label: 'Personalización', icon: 'fa fa-fw fa-home', routerLink: ['/custom']},
+            {label: 'Usuarios', icon: 'fa fa-fw fa-user', /*items: [
                 {label: 'Alta de usuarios', icon: 'fa fa-fw fa-add', routerLink: ['/users/create']},
-                {label: 'Listado de usuarios', icon: 'fa fa-fw fa-list', routerLink: ['/users/list']}
+                {label: 'Listado de usuarios', icon: 'fa fa-fw fa-list', */ routerLink: ['/users/list']}
 
-            ]},
+            /*]}*/,
             {label: 'Productos', icon: 'fa fa-fw fa-user', items: [
-                {label: 'Alta de productos', icon: 'fa fa-fw fa-add', routerLink: ['/products/create']},
+                {label: 'Alta de productos', icon: 'fa fa-fw fa-add', routerLink: ['/products/save']},
                 {label: 'Listado de productos', icon: 'fa fa-fw fa-list', routerLink: ['/products/list']}
 
-            ]},
+            ]},/*
             {
                 label: 'Components', icon: 'fa fa-fw fa-home', badge: '2',
                 items: [
@@ -99,7 +100,7 @@ export class AppMenuComponent implements OnInit {
                     }
                 ]
             },
-            {label: 'Documentation', icon: 'fa fa-fw fa-book', routerLink: ['/documentation']}
+            {label: 'Documentation', icon: 'fa fa-fw fa-book', routerLink: ['/documentation']}*/
         ];
     }
 }

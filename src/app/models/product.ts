@@ -1,10 +1,10 @@
+import { Price } from "./price";
+
 export interface Product {
     id: String;
-    title: String;
+    category: String
+    name: String;
     description: String;
-    picture_url: String;
-    quantity: Number;
-    currency_id: String;
-    unit_price: Number;
-    category_id: String
+    price: Price;
+    stock:number;
 }

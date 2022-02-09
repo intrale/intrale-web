@@ -4,67 +4,70 @@ import { Router  } from '@angular/router';
 
 import {ConfirmationService} from 'primeng/api'
 
-import { ListUsersService } from '../../../services/auth/listusers/listusers.service';
+import { ListProductService } from 'src/app/services/products/list/listProduct.service'
 
 import {DeleteUserService} from 'src/app/services/auth/deleteuser/deleteuser.service';
 import {DeleteUserRequest} from 'src/app/services/auth/deleteuser/deleteuser.request'
 
-import { User } from 'src/app/models/user';
-import { ListUsersRequest } from 'src/app/services/auth/listusers/listusers.request';
+import { Product } from 'src/app/models/product';
+import { ListProductRequest } from 'src/app/services/products/list/listProduct.request';
+import { DeleteProductService } from 'src/app/services/products/delete/deleteProduct.service';
+import { DeleteProductRequest } from 'src/app/services/products/delete/deleteproduct.request';
 
 @Component({
     templateUrl: './productslist.component.html',
-    providers:[ListUsersService, ConfirmationService, DeleteUserService]
+    providers:[ListProductService, ConfirmationService, DeleteProductService]
 })
 export class ProductsListComponent implements OnInit  {
 
     cols: any[];
 
-    users: User[];
+    products: Product[];
 
 
-    constructor(private listUsersService: ListUsersService, 
+    constructor(private listProductService: ListProductService, 
                 private router:Router,
                 private confirmationService: ConfirmationService,
-                private deleteUserService: DeleteUserService
+                private deleteProductService: DeleteProductService
                 ) { }
 
     ngOnInit() {
         this.cols = [
-            { field: 'email', header: 'Email' },
-            { field: 'name', header: 'Nombre' },
-            { field: 'familyName', header: 'Apellido' },
-            { field: 'status', header: 'Estado' }
+            /*{ field: 'id', header: 'Id' },*/
+            /*{ field: 'category', header: 'Categoria' },*/
+            { field: 'name', header: 'Name' },
+            { field: 'description', header: 'Descripcion' },
+            { field: 'stock', header: 'Stock' },
+            /*{ field: 'price.currencyAcronym', header: 'Moneda' },
+            { field: 'price.unitPrice', header: 'Valor' },*/
         ];
  
         setTimeout(()=> {
-            this.listUsersService.execute({} as ListUsersRequest).subscribe(
+            this.listProductService.execute({} as ListProductRequest).subscribe(
                 data => {
-                    this.users = data.users;
+                    this.products = data.products;
                 }
             )
         })
  
     }
 
-    onDelete(email:string){
-        console.log('username to delete:' + email);
+    onDelete(productId:string){
         this.confirmationService.confirm({
-            message: 'Esta seguro que desea eliminar el usuario ' + email + ' ?',
+            message: 'Esta seguro que desea eliminar el producto ?',
             accept: () => {
                 //Actual logic to perform a confirmation
-                console.log('Se confirma la eliminacion de:' + email)
-                this.deleteUserService.execute(
+                this.deleteProductService.execute(
                     {
-                        'email' : email 
-                    } as DeleteUserRequest
+                        'productId' : productId 
+                    } as DeleteProductRequest
                 ).subscribe(
                     value => {
-                        if (!this.deleteUserService.hasErrors(value)){
-                            this.listUsersService.execute({} as ListUsersRequest).subscribe(
+                        if (!this.deleteProductService.hasErrors(value)){
+                            this.listProductService.execute({} as ListProductRequest).subscribe(
                                 data => {
-                                    this.users = data.users;
-                                    this.router.navigate(['/#/users/list'])
+                                    this.products = data.products;
+                                    //this.router.navigate(['/#/products/list'])
                                 }
                             )
                         }
@@ -74,4 +77,7 @@ export class ProductsListComponent implements OnInit  {
         });
     }
 
+    create() {
+        this.router.navigate(['/products/save']);
+    }
 }

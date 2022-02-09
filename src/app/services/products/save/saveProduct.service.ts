@@ -3,16 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/primeng';
 
-import { CreateProductResponse } from './createProduct.response';
-import { CreateProductRequest } from './createProduct.request';
+import { SaveProductResponse } from './saveProduct.response';
+import { SaveProductRequest } from './saveProduct.request';
 
-import Endpoints from '../../../config/endpoints.json'
-import { Service } from '../../service';
+import Endpoints from 'src/app/config/endpoints.json'
+import { Service } from 'src/app/services/service';
 import { AppState } from 'src/app/config/appstate';
 
 
 @Injectable()
-export class CreateProductService extends Service<CreateProductRequest, CreateProductResponse>{
+export class SaveProductService extends Service<SaveProductRequest, SaveProductResponse>{
     
     constructor(protected httpClient: HttpClient, 
         protected messageService: MessageService, 
@@ -27,6 +27,6 @@ export class CreateProductService extends Service<CreateProductRequest, CreatePr
     
     
     protected getFunction(): string {
-        return 'create';
+        return 'save';
     }
 }

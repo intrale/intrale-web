@@ -1,0 +1,158 @@
+<div class="ui-fluid">
+    <div class="ui-g">
+        <div class="ui-g-12">
+            <div class="ui-messages ui-widget ui-corner-all ui-messages-success" style="margin: 0 0 1em 0">
+                <span class="ui-messages-icon fa fa-fw fa-2x fa-check"></span>
+                <ul>
+                    <li>
+                        <span class="ui-messages-summary" style="font-size:16px">
+                            Este formulario permite dar de alta nuevos productos 
+                            que luego podran ser utilizados dentro de la aplicacion.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card no-margin">
+                <h1>Edición de Productos</h1>
+                <div class="ui-g form-group">
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="name">Nombre *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='name' [formGroup]='productform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="description">Descripcion *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='description' [formGroup]='productform' ></app-input>
+                    </div>
+                
+                
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="currencyAcronym">Moneda</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <p-dropdown [options]="currenciesAcronyms" [(ngModel)]="selectedCurrencyAcronym"></p-dropdown>
+                        <!--app-input id='currencyAcronym' [formGroup]='productform' ></app-input-->
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="unitPrice">Precio Unitario</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='unitPrice' [formGroup]='productform' ></app-input>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="stock">Stock</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <app-input id='stock' [formGroup]='productform' ></app-input>
+                    </div>
+                    <div class="ui-g-12 ui-md-2">                   
+                    </div>
+                    <div class="ui-g-12 ui-md-4"></div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Imagen Principal *</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadMain($event)"
+                                auto="true"
+                                (onSelect)="onSelect($event)"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="mainFile.length<=0 && !actualProductId">
+                                    <img src="assets/img/noimage.jpg" class="fit-image-30"/>
+                                </ul>
+                                <ul *ngIf="mainFile.length<=0 && actualProductId">
+                                        <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/products/{{actualProductId}}/main.jpg" 
+                                            alt="Nature 1" class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                    </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Segunda Imagen</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadSecond($event)"
+                                auto="true"
+                                (onSelect)="onSelect($event)"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="secondFile.length<=0 && !actualProductId">
+                                    <img src="assets/img/noimage.jpg" class="fit-image-30"/>
+                                </ul>
+                                <ul *ngIf="secondFile.length<=0 && actualProductId">
+                                        <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/products/{{actualProductId}}/second.jpg" 
+                                            alt="Nature 1" class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                    </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="image">Tercer Imagen</label>
+                    </div>
+                    <div class="ui-g-12 ui-md-10">
+                        <p-fileUpload 
+                                accept="image/*" 
+                                maxFileSize="1000000"
+                                [showUploadButton]="false"
+                                [showCancelButton]="false"
+                                chooseLabel="Seleccione Imagen"
+                                customUpload="true" (uploadHandler)="uploadThird($event)"
+                                auto="true"
+                                (onSelect)="onSelect($event)"
+                                previewWidth="200">
+                        
+                       
+                            <ng-template pTemplate="content" >
+                                <ul *ngIf="thirdFile.length<=0 && !actualProductId">
+                                    <img src="assets/img/noimage.jpg" class="fit-image-30"/>
+                                </ul>
+                                <ul *ngIf="thirdFile.length<=0 && actualProductId">
+                                        <img src="https://mgnr0htbvd.execute-api.us-east-2.amazonaws.com/dev/files/get/INTRALE/products/{{actualProductId}}/third.jpg" 
+                                            class="fit-image-30"/>
+                                </ul>
+                            </ng-template>    
+                    </p-fileUpload>
+
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                        <label for="input">(*) campos obligatorios</label>
+                    </div>
+
+
+                    <div class="ui-g-12 ui-md-4">
+                    </div>
+                    <div class="ui-g-12 ui-md-2">
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <button pButton type="submit" label="Enviar" [disabled]="!isAvaiable()"
+                            style="margin-bottom:10px" class="ui-button-success"
+                            (click)="onSubmit()" ></button>
+                    </div>
+
+                </div>
+                <!--/form-->
+            </div>
+        </div>
+    </div>
+</div>

@@ -41,28 +41,32 @@ export abstract class Service <REQ extends Request, RES extends Response> {
         return err;
     }
 
+    public buildPost(request: REQ): Observable<RES> {
+        return this.httpClient
+        .post<RES>(this.getEndpoint(), request, 
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
+                'idtoken': 'Bearer ' + localStorage.getItem('idtoken'),
+                'function': this.getFunction(),
+                'businessname': 'INTRALE'
+            }
+        });
+    }
+
     public execute (request: REQ): Observable<RES> {
         console.log('Start call service:' + this.getEndpoint())
 
         request.requestId = uuidv4();
         request.businessName = 'INTRALE';
         
+        //FIXME: Revisar si esto deberia estar en el estado de aplicacion real
         this.appState.addExecute();
 
-        let res: Observable<RES> = this.httpClient
-            .post<RES>(this.getEndpoint(), request, 
-            {
-                headers: {
-                    //'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken'),
-                    'idtoken': 'Bearer ' + localStorage.getItem('idtoken'),
-                    'function': this.getFunction(),
-                    'businessname': 'INTRALE'
-                }
-            })
-            .pipe(share())
-            .pipe(catchError(this.handleError));
+        let res: Observable<RES> = 
+            this.buildPost(request).pipe(share())
+                                   .pipe(catchError(this.handleError));
 
         console.log('Post executed to:' + this.getEndpoint())
 

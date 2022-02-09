@@ -42,7 +42,7 @@ export class PayProductComponent implements OnInit {
                        if (actualProduct.id == this.id){
                            this.product = actualProduct;
                            this.product.id = "1234";
-                           this.product.picture_url = window.location.origin + this.product.picture_url + ".webp";
+                           //this.product.picture_url = window.location.origin + this.product.picture_url + ".webp";
                        } 
                     });
                 } 

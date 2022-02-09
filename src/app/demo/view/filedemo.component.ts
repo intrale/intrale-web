@@ -11,6 +11,7 @@ export class FileDemoComponent {
     uploadedFiles: any[] = [];
 
     onUpload(event) {
+        console.log('onUpload');
         for (const file of event.files) {
             this.uploadedFiles.push(file);
         }

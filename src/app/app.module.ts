@@ -73,6 +73,7 @@ import { TreeModule } from 'primeng/tree';
 import { TreeTableModule } from 'primeng/treetable';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
+
 import { ErrorTooltipDirective } from './directives/error.tooltip'
 
 
@@ -108,12 +109,13 @@ import { InputComponent } from './components/input/input.component'
 import { ErrorsComponent } from './components/errors.component'
 
 import {AppState} from 'src/app/config/appstate'
-import { CreateProductComponent } from './views/products/create/createProduct.component';
+import { SaveProductComponent } from './views/products/save/saveProduct.component';
 import { ProductsListComponent } from './views/products/list/productslist.component';
 
 import { ProductDummy } from './services/products/dummy/productDummy';
 import { PayProductComponent } from './views/products/pay/payProduct.component';
 import { PayResultProductComponent } from './views/products/pay/result/payResultProduct.component';
+import { CustomComponent } from './views/custom/custom.component';
 
 @NgModule({
     imports: [
@@ -221,10 +223,12 @@ import { PayResultProductComponent } from './views/products/pay/result/payResult
         InputComponent,
         ErrorsComponent,
 
-        CreateProductComponent,
+        SaveProductComponent,
         ProductsListComponent,
         PayProductComponent,
-        PayResultProductComponent
+        PayResultProductComponent,
+
+        CustomComponent
 
 
         
